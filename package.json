@@ -10,7 +10,7 @@
   "scripts": {
     "clean": "del ./build/*",
     "build": "npm run clean && tsc",
-    "pub": "git add . && git commit -m \"Updates\" && npm version patch && npm run build && npm publish"
+    "pub": "git add . && git commit -m \"Updates\" && npm version patch && npm run build && npm publish --access public"
   },
   "keywords": [],
   "author": "",
@@ -25,6 +25,8 @@
   "dependencies": {
     "@types/express": "^5.0.0",
     "amqplib": "^0.10.4",
+    "axios": "^1.7.7",
+    "dotenv": "^16.4.5",
     "express": "^4.21.1",
     "express-validator": "^7.2.0",
     "jsonwebtoken": "^9.0.2",
@@ -33,6 +35,8 @@
     "multer": "^1.4.5-lts.1",
     "redis": "^4.7.0",
     "redis-om": "^0.4.7",
+    "square": "^38.2.0",
+    "uuid": "^11.0.3",
     "yup": "^1.4.0"
   }
 }
