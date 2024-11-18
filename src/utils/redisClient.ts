@@ -29,7 +29,7 @@ export class redisClient {
 
             this.instance = createClient(config);
 
-            this.instance.on('error', (err) => {
+            this.instance.on('error', (err: any) => {
                 console.log('Redis Client Error', err)
                 throw new Error('Failed to connect to Redis');
             });
