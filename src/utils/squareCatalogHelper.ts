@@ -23,16 +23,32 @@ dotenv.config()
 
 // const { catalogApi } = client;
 
+export const getUserClient = (accessToken: string) => {
+  const { locationsApi, merchantsApi, oAuthApi, ordersApi, catalogApi } = new Client({
+      accessToken,
+      environment: process.env.ENVIRONMENT === 'production' ? Environment.Production : Environment.Sandbox
+  })
 
-export const initializeSquareClient = (squareAccessToken: string) => {
+  return {
+      locationsApi,
+      merchantsApi,
+      oAuthApi,
+      ordersApi,
+      catalogApi,
+  }
+}
 
-  const client = new Client({
-    accessToken: squareAccessToken,
-    environment: Environment.Production,
-  });
 
-  return client.catalogApi;
-};
+
+// export const initializeSquareClient = (squareAccessToken: string) => {
+
+//   const client = new Client({
+//     accessToken: squareAccessToken,
+//     environment: Environment.Production,
+//   });
+
+//   return client.catalogApi;
+// };
 
 export const createUniqueUUID = () => {
   return uuidv4()
@@ -195,7 +211,7 @@ export const downloadImageAsBlob = async (imageUrl: string) => {
 export const uploadImageToSquare = async (objectId: string, imageUrl: string) => {
   try {
     const fileBlob = await downloadImageAsBlob(imageUrl);
-    const catalogApi = initializeSquareClient(process.env.SQUARE_ACCESS_TOKEN!);
+    const {catalogApi} = getUserClient(process.env.SQUARE_ACCESS_TOKEN!);
     const file = new FileWrapper(fileBlob);
       const response = await catalogApi.createCatalogImage({
           idempotencyKey: createUniqueUUID(),

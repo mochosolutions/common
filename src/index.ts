@@ -9,14 +9,16 @@ export * from './middlewares/error-handler';
 export * from './middlewares/require-auth';
 export * from './middlewares/validate-request';
 
-export { default as redisClient } from './utils/redisClient';
-export * from './utils/squareCatalogHelper';
-
 export * from "./events/RabbitMQWrapper";
 export * from './events/RateLimiter';
 export * from './events/events';
 export * from './events/Publisher';
 export * from './events/subjects';
 export * from './events/Listener';
+
+export { default as redisClient } from './utils/redisClient';
+export * from './utils/squareCatalogHelper';
+export * from "./utils/s3-helpers";
+
 
 export * from './types';
