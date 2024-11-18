@@ -2,7 +2,7 @@ import { createClient, RedisClientType } from "redis";
 import { Repository, Schema, Entity } from 'redis-om';
 import { RedisDatabaseConnectionError } from '../errors/database-connection-error';
 
-export class RedisClient {
+export class redisClient {
     private static instance: RedisClientType | null = null;
     private static maxRetries = 3; // Maximum number of retry attempts
     private static retryInterval = 1000; // Time between retries in milliseconds
@@ -105,6 +105,4 @@ export class RedisClient {
             return false;
         }
     }
-  }
-
-export default RedisClient;
+}

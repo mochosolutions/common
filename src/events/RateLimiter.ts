@@ -1,5 +1,5 @@
 
-import redisClient from '../utils/redisClient';
+import {redisClient} from '../utils/redisClient';
 
 export class RateLimiter {
 
