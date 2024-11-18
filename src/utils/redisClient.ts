@@ -3,7 +3,7 @@ import { Repository, Schema, Entity } from 'redis-om';
 import { RedisDatabaseConnectionError } from '../errors/database-connection-error';
 
 export class redisClient {
-    private static instance: any | null = null;
+    private static instance: RedisClientType | null = null;
     private static maxRetries = 3; // Maximum number of retry attempts
     private static retryInterval = 1000; // Time between retries in milliseconds
   
@@ -29,7 +29,7 @@ export class redisClient {
 
             this.instance = createClient(config);
 
-            this.instance.on('error', (err: any) => {
+            this.instance.on('error', (err) => {
                 console.log('Redis Client Error', err)
                 throw new Error('Failed to connect to Redis');
             });
