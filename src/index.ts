@@ -16,7 +16,7 @@ export * from './events/Publisher';
 export * from './events/subjects';
 export * from './events/Listener';
 
-export { default as redisClient } from './utils/redisClient';
+export * from './utils/redisClient';
 export * from './utils/squareCatalogHelper';
 export * from "./utils/s3-helpers";
 export * from "./utils/makeRequestsInBatches";
