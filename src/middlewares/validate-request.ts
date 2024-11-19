@@ -4,13 +4,22 @@ import { validationResult } from 'express-validator';
 import { BadRequestError  } from '../errors/bad-request-error';
 import Validators from '../validators';
 
-export const validateRequest = (validator: string) => {
-  if(!Validators.hasOwnProperty(validator)){
-    throw new Error(`'${validator}' validator does not exist`)
+interface Validator {
+  validate: (data: any, options?: any) => Promise<any>;
+}
+
+interface ValidatorMap {
+  [key: string]: Validator;
+}
+
+
+export const validateRequest = (validatorName: string, validators: ValidatorMap) => {
+  if(!validators.hasOwnProperty(validatorName)){
+    throw new Error(`'${validatorName}' validator does not exist`)
   }
   return async function(req: Request, res: Response, next: NextFunction) {
     try {
-        const validated = await (Validators as any)[validator].validate({
+        const validated = await validators[validatorName].validate({
           body: req.body,
           // query: req.query,
           params: req.params,
