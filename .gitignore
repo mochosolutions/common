@@ -1,2 +1,4 @@
 build
 node_modules
+# CodeArtifact token written at publish time — never commit
+.npmrc

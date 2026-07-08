@@ -7,10 +7,13 @@
   "files": [
     "build/**/*"
   ],
+  "publishConfig": {
+    "registry": "https://mocho-127168571259.d.codeartifact.us-east-1.amazonaws.com/npm/mocho/"
+  },
   "scripts": {
     "clean": "del ./build/*",
     "build": "npm run clean && tsc",
-    "pub": "git add . && git commit -m \"Updates\" && npm version patch && npm run build && npm publish --access public"
+    "pub": "git add . && git commit -m \"Updates\" && npm version patch && npm run build && npm publish"
   },
   "keywords": [],
   "author": "",
