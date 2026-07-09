@@ -24,5 +24,6 @@ export * from "./utils/makeRequestsInBatches";
 export * from "./utils/jsonFileHelpers";
 
 export * from './logging/logger-port';
+export * from './logging/create-logger';
 
 export * from './types';
