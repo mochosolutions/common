@@ -1,0 +1,5 @@
+# Copy to .npmrc (gitignored) to install/publish @mocho/* against the private CodeArtifact registry.
+# Auth is a short-lived token via the CODEARTIFACT_AUTH_TOKEN env var (npm expands ${...} at runtime)
+# — never a committed secret. Mint one from mocho-solutions-home: `eval "$(make ca-token)"`.
+@mocho:registry=https://mocho-127168571259.d.codeartifact.us-east-1.amazonaws.com/npm/mocho/
+//mocho-127168571259.d.codeartifact.us-east-1.amazonaws.com/npm/mocho/:_authToken=${CODEARTIFACT_AUTH_TOKEN}
